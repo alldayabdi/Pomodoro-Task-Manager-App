@@ -2,31 +2,11 @@ import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import './UserPage.css'
+import TaskForm from '../TaskForm/TaskForm';
 
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
-  // const user = useSelector((store) => store.user);
-  const [description, setDescription] = useState('');
-  const [taskName, setTaskName] = useState('');
-  const userId = useSelector(store => store.user.id);
 
   const dispatch = useDispatch();
-
-  
-
-  const handleSubmit = () => {
-    let bundledObject = {
-      description: description,
-      name: taskName,
-      user_id: userId
-    }
-    dispatch({type: 'ADD_TASK', payload: bundledObject});
-
-    // setDescription('');
-    // setTaskName('');
-
-  }
-
   const tasks = useSelector(store => store.taskReducer);
 
   useEffect(() => {
@@ -35,8 +15,6 @@ function UserPage() {
 
   return (
     <div className="app-container">
-      {/* <h2>Welcome, {user.username}!</h2> */}
-      {/* <p>Your ID is: {user.id}</p> */}
 
       <table >
         <thead>
@@ -60,26 +38,8 @@ function UserPage() {
             )
           })}
         </tbody>
-
-
       </table>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter Task Name"
-          onChange={(event) => setTaskName(event.target.value)}
-        />
-
-        <input
-          type="text"
-          placeholder="Enter Task Description"
-          onChange={(event) => setDescription(event.target.value)}
-        />
-        <br />
-
-
-        <button type="submit">Add to Task List!</button>
-      </form>
+      <TaskForm />
 
       {/* <LogOutButton className="btn" /> */}
     </div>
