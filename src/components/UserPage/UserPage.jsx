@@ -8,16 +8,23 @@ function UserPage() {
   // const user = useSelector((store) => store.user);
   const [description, setDescription] = useState('');
   const [taskName, setTaskName] = useState('');
+  const userId = useSelector(store => store.user.id);
 
   const dispatch = useDispatch();
 
+  
+
   const handleSubmit = () => {
-    // let bundledObject = {
-    //   description: description,
-    //   taskName: taskName,
-    //   user_id: userId
-    // }
-    console.log('Clicked!!');
+    let bundledObject = {
+      description: description,
+      taskName: taskName,
+      user_id: userId
+    }
+    dispatch({type: 'ADD_TASK', payload: bundledObject});
+
+    setDescription('');
+    setTaskName('');
+
   }
 
   const tasks = useSelector(store => store.taskReducer);
@@ -57,7 +64,7 @@ function UserPage() {
 
       </table>
       <form onSubmit={handleSubmit}>
-      <input
+        <input
           type="text"
           placeholder="Enter Task Name"
           onChange={(event) => setTaskName(event.target.value)}
@@ -68,9 +75,12 @@ function UserPage() {
           placeholder="Enter Task Description"
           onChange={(event) => setDescription(event.target.value)}
         />
-    
+        <br />
+
+
         <button type="submit">Add to Task List!</button>
       </form>
+
       {/* <LogOutButton className="btn" /> */}
     </div>
 
