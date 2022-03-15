@@ -8,6 +8,7 @@ function RegisterPage() {
 
   return (
     <div>
+     
       <RegisterForm />
 
       <center>

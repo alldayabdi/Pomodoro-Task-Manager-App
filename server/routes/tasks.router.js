@@ -37,6 +37,22 @@ router.get('/', (req, res) => {
 
   })
 
+  router.delete('/:id', (req, res) => {
+    // endpoint functionality
+    let reqId = req.params.id;
+    if (req.isAuthenticated()) {
+      console.log('/task DELETE route');
+      console.log('is authenticated?', req.isAuthenticated());
+      console.log('user', req.user);
+      let queryText = 'DELETE FROM tasks where id = $1;';
+      pool.query(queryText, [reqId])
+      .then(result => res.sendStatus(201))
+        .catch(err => res.sendStatus(500));
+    } else {
+      res.sendStatus(403);
+    }
+  });
+
 
 
 module.exports = router;

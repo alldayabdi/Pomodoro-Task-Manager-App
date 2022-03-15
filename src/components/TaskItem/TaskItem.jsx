@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 function TaskItem({task}){
+    const dispatch = useDispatch();
 
     function handleDelete(){
-        console.log(task.id);
+        dispatch({type: 'DELETE_TASK', payload: task.id });
     }
 
     return (
