@@ -1,20 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import './UserPage.css'
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   // const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-    const tasks = useSelector(store => store.tasks);
+    const tasks = useSelector(store => store.taskReducer);
   useEffect(() => {
     dispatch({ type: 'FETCH_TASKS' });
   }, []);
   return (
-    <div className="container">
+    <div className="app-container">
       {/* <h2>Welcome, {user.username}!</h2> */}
       {/* <p>Your ID is: {user.id}</p> */}
-      <LogOutButton className="btn" />
+
+      <table >
+        <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Task Notes</th>
+            </tr>
+            <tbody></tbody>
+            
+                {tasks.map((task,i) => {
+                    return (
+                        <tr key ={i} >
+                          
+                          <td>{task.name}</td>
+                          <td>{task.description}</td>
+                          
+                        </tr>
+                    )
+                })}
+                
+                </thead>
+            </table>
+      {/* <LogOutButton className="btn" /> */}
     </div>
     
   );
