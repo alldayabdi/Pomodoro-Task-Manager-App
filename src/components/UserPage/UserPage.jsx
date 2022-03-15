@@ -17,13 +17,13 @@ function UserPage() {
   const handleSubmit = () => {
     let bundledObject = {
       description: description,
-      taskName: taskName,
+      name: taskName,
       user_id: userId
     }
     dispatch({type: 'ADD_TASK', payload: bundledObject});
 
-    setDescription('');
-    setTaskName('');
+    // setDescription('');
+    // setTaskName('');
 
   }
 

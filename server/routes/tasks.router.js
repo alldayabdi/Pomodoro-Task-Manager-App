@@ -19,6 +19,24 @@ router.get('/', (req, res) => {
     }
   });
 
+  router.post('/',(req,res) => {
+    if(req.isAuthenticated()){
+        console.log(req.body.description, req.body.name);
+        console.log(req.body);
+        console.log('is authenticated?', req.isAuthenticated());
+        console.log('user', req.user);
+        let queryText = `INSERT INTO "tasks" ("name", "description", "user_id") 
+    VALUES ($1, $2, $3);`
+        pool.query(queryText,[req.body.name, req.body.description, req.user.id])
+        .then(result => res.sendStatus(201))
+      .catch(err => res.sendStatus(500));
+
+    }else {
+    res.sendStatus(403);
+  }
+
+  })
+
 
 
 module.exports = router;
