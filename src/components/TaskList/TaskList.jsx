@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import TaskItem from '../TaskItem/TaskItem';
+import TaskItem from '../TaskItem/TaskItem'; 
+// import Table from 'react-bootstrap/Table'
+import TaskEdit from '../TaskEdit/TaskEdit';
 
 function TaskList(){
     const dispatch = useDispatch();
@@ -10,9 +12,12 @@ function TaskList(){
         dispatch({ type: 'FETCH_TASKS' });
       }, []);
 
+      const [editTaskID, setTaskID] = useState(17)
+
 
     return (
         <>
+        <form>
         <table>
         <thead>
           <tr>
@@ -22,24 +27,27 @@ function TaskList(){
           </tr>
           
         </thead>
-        
-
         <tbody>
             
             {tasks.map((task, i) => {
                
                 return (
+                  <Fragment>
+                    {editTaskID === task.id ? (
+                     <TaskEdit  />
+                     ): (
+                     <TaskItem key={i} task={task} />
+                     )} 
                     
-                    <TaskItem key={i} task={task} />
-                    
+                    </Fragment>
+                 
                 )
                 
             })}
             
-        
-
         </tbody>
         </table>
+        </form>
         </>
 
     )
