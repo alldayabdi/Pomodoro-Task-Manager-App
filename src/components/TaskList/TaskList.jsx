@@ -12,7 +12,12 @@ function TaskList(){
         dispatch({ type: 'FETCH_TASKS' });
       }, []);
 
-      const [editTaskID, setTaskID] = useState(17)
+      const [editTaskID, setTaskID] = useState(null)
+
+      const handleEditClick = (event, task) =>{
+        event.preventDefault();
+        setTaskID(task.id)
+      }
 
 
     return (
@@ -36,7 +41,9 @@ function TaskList(){
                     {editTaskID === task.id ? (
                      <TaskEdit  />
                      ): (
-                     <TaskItem key={i} task={task} />
+                     <TaskItem key={i} task={task} 
+                     handleEditClick ={handleEditClick}
+                     />
                      )} 
                     
                     </Fragment>

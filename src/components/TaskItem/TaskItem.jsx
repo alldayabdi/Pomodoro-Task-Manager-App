@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 
 
 
-function TaskItem({task}){
+function TaskItem({ task, handleEditClick }) {
     // const dispatch = useDispatch();
     // const history = useHistory();
 
@@ -25,30 +25,32 @@ function TaskItem({task}){
     //           swal('Your task is safe!');
     //         }
     //       });
-        
+
     // }
 
-    
 
-    
+
+
 
     return (
         <>
-        <tr>
+            <tr>
 
-        <td>{task.name}</td>
-        <td>{task.description}</td>
-        
-        {/* <td>
-            <button>Start</button>
-            <button>Delete</button>
-            <button >Edit</button>
-             
-        </td> */}
-        
-        </tr>
-      
-        
+                <td>{task.name}</td>
+                <td>{task.description}</td>
+
+                <td>
+
+                    <button onClick={(event) =>
+                        handleEditClick(event, task)}>
+                        Edit
+                    </button>
+
+                </td>
+
+            </tr>
+
+
         </>
     )
 
