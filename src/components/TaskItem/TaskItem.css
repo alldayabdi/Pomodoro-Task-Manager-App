@@ -1,0 +1,8 @@
+.btn-delete {
+  background: rgb(143, 182, 236);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 20px;
+}

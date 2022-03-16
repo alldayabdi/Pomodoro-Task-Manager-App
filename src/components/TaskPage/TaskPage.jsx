@@ -16,41 +16,14 @@ function TaskPage() {
   }, []);
 
   return (
+    <>
     <div className="app-container">
-
-      {/* <table >
-        <thead>
-          <tr>
-            <th>Task Name</th>
-            <th>Task Description/Notes</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          {tasks.map((task, i) => {
-            return (
-              <tr key={i} >
-
-                <td>{task.name}</td>
-                <td>{task.description}</td>
-                <td> 
-                 <button>Start</button>
-                 <button>Delete</button>
-                 <button>Edit</button>
-        
-                 </td>
-
-              </tr>
-            )
-          })}
-        </tbody>
-      </table> */}
       <TaskList />
+      </div>
+      <br />
       <TaskForm />
 
-      {/* <LogOutButton className="btn" /> */}
-    </div>
+    </>
 
   );
 }
