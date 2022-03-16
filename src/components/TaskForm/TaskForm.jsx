@@ -10,6 +10,12 @@ function TaskForm() {
     const tasks = useSelector(store => store.taskReducer);
 
     const handleSubmit = () => {
+        swal({
+            title: "Good job!",
+            text: "You added a task!",
+            icon: "success",
+            button: "OK!",
+          });
         let bundledObject = {
             description: description,
             name: taskName,

@@ -20,7 +20,9 @@ function TaskList(){
             <th>Task Description/Notes</th>
             <th>Actions</th>
           </tr>
+          
         </thead>
+        
 
         <tbody>
             

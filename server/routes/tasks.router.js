@@ -55,19 +55,19 @@ router.get('/', (req, res) => {
 
   router.put('/:id', (req, res) => {
     let reqId = req.params.id;
+    if (req.isAuthenticated()) {
     console.log('/tasks put route', req.body);
     const queryText = `UPDATE "tasks"
-  SET "name" =  $1, "tasks" = $2
+  SET "name" =  $1, "description" = $2
   WHERE id = $3;`;
     // endpoint functionality
     const queryValues = [req.body.name, req.body.description, reqId];
-
-    pool.query(queryText, queryValues).then(() => {
-        res.sendStatus(200)
-    }).catch((error) => {
-        console.log('Error updating TASK', error);
-        res.sendStatus(500);
-    })
+    pool.query(queryText, queryValues)
+    .then(result => res.sendStatus(201))
+    .catch(err => res.sendStatus(500));
+    } else {
+        res.sendStatus(403)
+    }
 });
 
 

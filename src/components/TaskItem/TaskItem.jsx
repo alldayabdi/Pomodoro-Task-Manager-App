@@ -19,29 +19,31 @@ function TaskItem({task}){
             if (result) {
                 dispatch({type: 'DELETE_TASK', payload: task.id });
             } else {
-              swal('Your todo is safe!');
+              swal('Your task is safe!');
             }
           });
         
     }
 
-    // function handleEdit(){
-    //     dispatch({type: 'EDIT_TASK', payload: task });
-    // }
+    function handleEdit(){
+        console.log(task.id);
+    }
 
     return (
         <>
         <tr>
+
         <td>{task.name}</td>
         <td>{task.description}</td>
         <td>
             <button>Start</button>
-            <button className= ".btn-delete" onClick={handleDelete}>Delete</button>
-            <button>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleEdit}>Edit</button>
             
         </td>
         </tr>
         
+       
         
         </>
     )
