@@ -6,7 +6,9 @@ import TaskEdit from '../TaskEdit/TaskEdit';
 
 function TaskList(){
     const dispatch = useDispatch();
+    const [updatedTasks, setUpdatedTasks] = useState([]);
     const tasks = useSelector(store => store.taskReducer);
+    const userId = useSelector(store => store.user.id);
     const [editFormData, setEditFormData] = useState({
       taskName: '',
       taskDescription: ''
@@ -43,12 +45,36 @@ function TaskList(){
         setEditFormData(formValues);
       }
 
+      const handleEditFormSubmit = (event) => {
+        event.preventDefault();
+    
+        const editedTask = {
+          id: editTaskID,
+          name: editFormData.taskName,
+          description: editFormData.taskDescription,
+          
+        };
+
+        dispatch({ type: 'EDIT_TASK', payload: editedTask });
+    
+        const newTasks = [...tasks];
+    
+        const index = updatedTasks.findIndex((task) => task.id === editTaskID)
+    
+        newTasks[index] = editedTask;
+    
+        setUpdatedTasks(newTasks)
+        console.log(newTasks);
+        setTaskID(null);
+      };
+    
+
       
 
 
     return (
         <>
-        <form >
+        <form onSubmit={handleEditFormSubmit} >
         <table>
         <thead>
           <tr>
