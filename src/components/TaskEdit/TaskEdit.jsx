@@ -1,13 +1,15 @@
 import React from 'react'
 
-const TaskEdit = () => {
+const TaskEdit = ({editFormData, handleEditFormChange}) => {
   return (
     <tr>
         <td>
         <input
                 type="text"
                 placeholder="Enter Task Name"
-                onChange={(event) => setTaskName(event.target.value)}
+                onChange={handleEditFormChange}
+                name = "name"
+                value = {editFormData.taskName}
             />
 
         </td>
@@ -15,8 +17,14 @@ const TaskEdit = () => {
         <input
                 type="text"
                 placeholder="Enter Task Description"
-                onChange={(event) => setDescription(event.target.value)}
+                onChange={handleEditFormChange}
+                name ="description"
+                value = {editFormData.taskDescription}
             />
+
+        </td>
+        <td>
+        <button type="submit">Save</button>
 
         </td>
 

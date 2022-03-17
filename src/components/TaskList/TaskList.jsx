@@ -7,6 +7,21 @@ import TaskEdit from '../TaskEdit/TaskEdit';
 function TaskList(){
     const dispatch = useDispatch();
     const tasks = useSelector(store => store.taskReducer);
+    const [editFormData, setEditFormData] = useState({
+      taskName: '',
+      taskDescription: '',
+      
+    });
+
+    const handleEditFormChange = (event =>{
+      event.preventDefault();
+      const fieldName = event.target.getAttribute("name")
+      const fieldValue = event.target.value;
+      const newFormData = { ...editFormData };
+      newFormData[fieldName] = fieldValue;
+  
+      setEditFormData(newFormData);
+    })
 
     useEffect(() => {
         dispatch({ type: 'FETCH_TASKS' });
@@ -17,12 +32,20 @@ function TaskList(){
       const handleEditClick = (event, task) =>{
         event.preventDefault();
         setTaskID(task.id)
+        const formValues = {
+          taskName: task.name,
+          taskDescription: task.description,
+          
+        };
+        setEditFormData(formValues);
       }
+
+      
 
 
     return (
         <>
-        <form>
+        <form >
         <table>
         <thead>
           <tr>
@@ -37,11 +60,12 @@ function TaskList(){
             {tasks.map((task, i) => {
                
                 return (
-                  <Fragment>
+                  <Fragment key={i}>
                     {editTaskID === task.id ? (
-                     <TaskEdit  />
+                     <TaskEdit editFormData= {editFormData}
+                      handleEditFormChange ={handleEditFormChange} />
                      ): (
-                     <TaskItem key={i} task={task} 
+                     <TaskItem  task={task} 
                      handleEditClick ={handleEditClick}
                      />
                      )} 
