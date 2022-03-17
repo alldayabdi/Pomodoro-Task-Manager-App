@@ -19,8 +19,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import StartTask from '../../StartTask/StartTask';
 
-import './App.css';
+import './App.css'; 
 
 function App() {
   const dispatch = useDispatch();
@@ -96,6 +97,13 @@ function App() {
             }
           </Route>
 
+          <Route 
+          exact 
+          path = "/start">
+          <StartTask />
+          </Route>
+          
+
           <Route
             exact
             path="/home"
@@ -109,6 +117,8 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
