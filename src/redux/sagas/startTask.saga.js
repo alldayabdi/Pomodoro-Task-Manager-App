@@ -2,14 +2,15 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 import { takeEvery} from 'redux-saga/effects';
 
-function* fetchStartTask() {
+function* fetchStartTask(action) {
 
     try {
         console.log(action.payload);
         const tasks = yield axios.get(`/api/tasks/${action.payload}`)
       
         yield put({ type: 'SET_START_TASK', payload: tasks.data });
-        // console.log('after reducer is called, still in saga');
+        console.log(tasks.data);
+        
 
     } catch {
         console.log('Get all error');
