@@ -8,7 +8,7 @@ function* fetchStartTask(action) {
         console.log(action.payload);
         const tasks = yield axios.get(`/api/tasks/${action.payload}`)
       
-        yield put({ type: 'SET_START_TASK', payload: tasks.data });
+        yield put({ type: 'SET_START_TASK', payload: tasks.data[0] });
         console.log(tasks.data);
         
 

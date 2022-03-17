@@ -38,7 +38,7 @@ function TaskItem({ task, handleEditClick, handleDeleteClick }) {
 function handleStart(id){
     console.log(id);
     dispatch({type: "GET_START_TASK", payload: id })
-    // history.push('/start')
+    history.push('/start')
 }
 
 
