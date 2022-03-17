@@ -6,7 +6,7 @@ import tasksSaga from './Task.saga';
 import addTask from './AddTask.saga';
 import deleteTaskSaga from './delete.saga';
 import editTaskSaga from './Edit.saga';
-
+import startTaskSaga from './startTask.saga'
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -22,6 +22,7 @@ export default function* rootSaga() {
     tasksSaga(),
     addTask(),
     deleteTaskSaga(),
-    editTaskSaga()
+    editTaskSaga(),
+    startTaskSaga()
   ]);
 }

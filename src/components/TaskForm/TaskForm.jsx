@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 
 function TaskForm() {
-    const [description, setDescription] = useState('');
-    const [taskName, setTaskName] = useState('');
+    const [description, setDescription] = useState("");
+    const [taskName, setTaskName] = useState("");
     const userId = useSelector(store => store.user.id);
 
     const dispatch = useDispatch();
@@ -23,8 +24,8 @@ function TaskForm() {
         }
         dispatch({ type: 'ADD_TASK', payload: bundledObject });
 
-        setDescription('');
-        setTaskName('');
+        setDescription("");
+        setTaskName("");
 
     }
 

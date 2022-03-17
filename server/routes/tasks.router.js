@@ -19,6 +19,24 @@ router.get('/', (req, res) => {
     }
   });
 
+  router.get('/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+      console.log('This is the req params id', req.params.id);
+      console.log('/tasks GET Specific task route');
+      console.log('is authenticated?', req.isAuthenticated());
+      console.log('user', req.user);
+      let queryText = `SELECT * FROM "tasks" WHERE id = ${req.params.id}`;
+      pool.query(queryText).then((result) => {
+        res.send(result.rows);
+      }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+      });
+    } else {
+      res.sendStatus(403);
+    }
+  });
+
   router.post('/',(req,res) => {
     if(req.isAuthenticated()){
         console.log(req.body.description, req.body.name);

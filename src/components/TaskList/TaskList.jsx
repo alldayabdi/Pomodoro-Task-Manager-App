@@ -3,6 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import TaskItem from '../TaskItem/TaskItem'; 
 // import Table from 'react-bootstrap/Table'
 import TaskEdit from '../TaskEdit/TaskEdit';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import FormControl from '@mui/material/FormControl';
+import swal from 'sweetalert';
+
 
 function TaskList(){
     const dispatch = useDispatch();
@@ -67,26 +77,50 @@ function TaskList(){
         console.log(newTasks);
         setTaskID(null);
       };
+
       const handleCancelClick = () => {
         setTaskID(null);
       };
+      const handleDeleteClick = (taskId) => {
+        swal({
+                  title: 'Are you sure?',
+                  text: 'Once deleted, you will not be able to recover this task!',
+                  icon: 'warning',
+                  buttons: true,
+                  dangerMode: true,
+                }).then((result) => {
+                  if (result) {
+                    dispatch({ type: 'DELETE_TASK', payload: taskId})
+                  } else {
+                    swal('Your task is safe!');
+                  }
+                });
 
+        const newTasks = [...updatedTasks];
+    
+        const index = updatedTasks.findIndex((task) => task.id === taskId);
+    
+        newTasks.splice(index, 1);
+    
+        setUpdatedTasks(newTasks);
+      };
       
 
 
     return (
         <>
-        <form onSubmit={handleEditFormSubmit} >
-        <table>
-        <thead>
-          <tr>
-            <th>Task Name</th>
-            <th>Task Description/Notes</th>
-            <th>Actions</th>
-          </tr>
+        <FormControl onSubmit={handleEditFormSubmit} >
+          <TableContainer component={Paper}>
+        <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Task Name</TableCell>
+            <TableCell >Task Description/Notes</TableCell>
+            <TableCell>Actions</TableCell>
+          </TableRow>
           
-        </thead>
-        <tbody>
+        </TableHead>
+        <TableBody>
             
             {tasks.map((task, i) => {
                
@@ -96,10 +130,12 @@ function TaskList(){
                      <TaskEdit editFormData= {editFormData}
                       handleEditFormChange ={handleEditFormChange}
                       handleCancelClick={handleCancelClick}
+                      
                       />
                      ): (
                      <TaskItem  task={task} 
                      handleEditClick ={handleEditClick}
+                     handleDeleteClick ={handleDeleteClick}
                      />
                      )} 
                     
@@ -109,9 +145,10 @@ function TaskList(){
                 
             })}
             
-        </tbody>
-        </table>
-        </form>
+        </TableBody>
+        </Table>
+        </TableContainer>
+        </FormControl>
         </>
 
     )

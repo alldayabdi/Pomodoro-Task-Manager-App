@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './TaskItem.css'
+// import './TaskItem.css'
 import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom'
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import FormControl from '@mui/material/FormControl';
+import TableCell from '@mui/material/TableCell';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
 
-function TaskItem({ task, handleEditClick }) {
-    // const dispatch = useDispatch();
-    // const history = useHistory();
+function TaskItem({ task, handleEditClick, handleDeleteClick }) {
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     // function handleDelete(){
     //     swal({
@@ -28,27 +35,36 @@ function TaskItem({ task, handleEditClick }) {
 
     // }
 
-
+function handleStart(id){
+    console.log(id);
+    dispatch({type: "GET_START_TASK", payload: id })
+    // history.push('/start')
+}
 
 
 
     return (
         <>
-            <tr>
+           <TableRow>
 
-                <td>{task.name}</td>
-                <td>{task.description}</td>
+                <TableCell>{task.name}</TableCell>
+                <TableCell>{task.description}</TableCell>
 
-                <td>
+                <TableCell>
+                    <button onClick={() => handleStart(task.id)}>Start</button>
 
                     <button onClick={(event) =>
                         handleEditClick(event, task)}>
                         Edit
                     </button>
+                    <button type="button" onClick={() => handleDeleteClick(task.id)}>
+                        {/* <DeleteIcon/> */} Delete
+                    </button>
 
-                </td>
 
-            </tr>
+                </TableCell>
+
+            </TableRow>
 
 
         </>
