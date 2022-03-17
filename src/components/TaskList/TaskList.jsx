@@ -9,19 +9,20 @@ function TaskList(){
     const tasks = useSelector(store => store.taskReducer);
     const [editFormData, setEditFormData] = useState({
       taskName: '',
-      taskDescription: '',
+      taskDescription: ''
       
     });
 
-    const handleEditFormChange = (event =>{
+    const handleEditFormChange = (event) => {
       event.preventDefault();
-      const fieldName = event.target.getAttribute("name")
+      const fieldName = event.target.getAttribute("name");
       const fieldValue = event.target.value;
+  
       const newFormData = { ...editFormData };
       newFormData[fieldName] = fieldValue;
   
       setEditFormData(newFormData);
-    })
+    };
 
     useEffect(() => {
         dispatch({ type: 'FETCH_TASKS' });
@@ -31,7 +32,9 @@ function TaskList(){
 
       const handleEditClick = (event, task) =>{
         event.preventDefault();
+        console.log(task.id);
         setTaskID(task.id)
+
         const formValues = {
           taskName: task.name,
           taskDescription: task.description,

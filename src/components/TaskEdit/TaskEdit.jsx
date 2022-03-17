@@ -7,9 +7,10 @@ const TaskEdit = ({editFormData, handleEditFormChange}) => {
         <input
                 type="text"
                 placeholder="Enter Task Name"
-                onChange={handleEditFormChange}
-                name = "name"
                 value = {editFormData.taskName}
+                onChange={handleEditFormChange}
+                name = "taskName"
+                
             />
 
         </td>
@@ -18,7 +19,7 @@ const TaskEdit = ({editFormData, handleEditFormChange}) => {
                 type="text"
                 placeholder="Enter Task Description"
                 onChange={handleEditFormChange}
-                name ="description"
+                name ="taskDescription"
                 value = {editFormData.taskDescription}
             />
 
