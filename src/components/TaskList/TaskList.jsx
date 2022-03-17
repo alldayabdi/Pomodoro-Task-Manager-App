@@ -67,7 +67,9 @@ function TaskList(){
         console.log(newTasks);
         setTaskID(null);
       };
-    
+      const handleCancelClick = () => {
+        setTaskID(null);
+      };
 
       
 
@@ -92,7 +94,9 @@ function TaskList(){
                   <Fragment key={i}>
                     {editTaskID === task.id ? (
                      <TaskEdit editFormData= {editFormData}
-                      handleEditFormChange ={handleEditFormChange} />
+                      handleEditFormChange ={handleEditFormChange}
+                      handleCancelClick={handleCancelClick}
+                      />
                      ): (
                      <TaskItem  task={task} 
                      handleEditClick ={handleEditClick}

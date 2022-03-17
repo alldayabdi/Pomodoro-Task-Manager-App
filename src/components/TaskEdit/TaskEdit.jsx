@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 // import { useSelector, useDispatch } from 'react-redux';
 
 
-const TaskEdit = ({editFormData, handleEditFormChange}) => {
+const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick}) => {
     // const dispatch = useDispatch();
     // useEffect(() => {
     //     dispatch({ type: 'FETCH_TASKS' });
@@ -32,6 +32,9 @@ const TaskEdit = ({editFormData, handleEditFormChange}) => {
         </td>
         <td>
         <button type="submit">Save</button>
+        <button type="button" onClick={handleCancelClick}>
+          Cancel
+        </button>
 
         </td>
 
