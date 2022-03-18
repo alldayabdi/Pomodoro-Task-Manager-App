@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Buttons = (title, toggled, calledFunction) => {
+const Button = ({title, toggled, calledFunction}) => {
   return (
    <button className={toggled} onClick = {calledFunction}>
        {title}
@@ -8,4 +8,4 @@ const Buttons = (title, toggled, calledFunction) => {
   )
 }
 
-export default Buttons
+export default Button
