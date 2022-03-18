@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import Button from './Button'
+import '../Pomodoro Clock/Pomodoro.css'
 
 const Settings = () => {
     const[newTimer, setNewTimer] =useState({
-        work: 0.3,
-        short: 1,
-        long: 1,
+        work: 0,
+        short: 0,
+        long: 0,
         active: 'work'
     })
 
@@ -44,15 +45,15 @@ const Settings = () => {
     }
   return (
     <div>
-        <form>
-        <div>
-            <input type="text" name ="work" onChange={handleChange}
+        <form className="form-container">
+        <div className="input-wrapper">
+            <input type="number" name ="work" onChange={handleChange}
             value ={newTimer.work}
             />
-            <input type="text" name ="shortBreak" onChange={handleChange}
+            <input type="number" name ="shortBreak" onChange={handleChange}
              value ={newTimer.short}
             />
-            <input type="text" name ="longBreak" onChange={handleChange}
+            <input type="number" name ="longBreak" onChange={handleChange}
              value ={newTimer.long}
             />
         </div>

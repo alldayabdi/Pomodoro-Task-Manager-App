@@ -9,7 +9,9 @@ const StartTask = () => {
     console.log(holdStartDetails.id);
   return (
       <>
+      <div className='container'>
     <Settings/>
+    </div>
     </>
   )
 }
