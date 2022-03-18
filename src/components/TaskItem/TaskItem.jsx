@@ -10,6 +10,17 @@ import FormControl from '@mui/material/FormControl';
 import TableCell from '@mui/material/TableCell';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
 
 
@@ -41,12 +52,17 @@ function handleStart(id){
     history.push('/start')
 }
 
+const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
 
     return (
         <>
            <TableRow>
-
+               
+           
                 <TableCell>{task.name}</TableCell>
                 <TableCell>{task.description}</TableCell>
 
@@ -54,7 +70,7 @@ function handleStart(id){
                     <button onClick={() => handleStart(task.id)}>Start</button>
 
                     <button onClick={(event) =>
-                        handleEditClick(event, task)}>
+                        handleEditClick(event, task)} >
                         Edit
                     </button>
                     <button type="button" onClick={() => handleDeleteClick(task.id)}>

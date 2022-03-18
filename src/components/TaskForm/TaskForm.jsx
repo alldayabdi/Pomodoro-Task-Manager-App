@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
+import TextField from '@mui/material/TextField';
+import './TaskForm.css'
 
 function TaskForm() {
     const [description, setDescription] = useState("");
@@ -12,8 +14,8 @@ function TaskForm() {
 
     const handleSubmit = () => {
         swal({
-            title: "Good job!",
-            text: "You added a task!",
+            title: "You added a task!",
+            text: "Make sure to finish it!",
             icon: "success",
             button: "OK!",
           });
@@ -30,14 +32,15 @@ function TaskForm() {
     }
 
     return (
+        <div className='formContainer'>
         <form onSubmit={handleSubmit}>
-            <input
+            <TextField id="outlined-basic" label="Task Name" variant="outlined" 
                 type="text"
                 placeholder="Enter Task Name"
                 onChange={(event) => setTaskName(event.target.value)}
             />
 
-            <input
+            <TextField id="filled-basic" label="Task Description" variant="filled"
                 type="text"
                 placeholder="Enter Task Description"
                 onChange={(event) => setDescription(event.target.value)}
@@ -45,8 +48,9 @@ function TaskForm() {
             <br />
 
 
-            <button type="submit">Add to Task List!</button>
+            <button className='taskList' type="submit">Add to Task List!</button>
         </form>
+        </div>
     )
 
 

@@ -36,9 +36,9 @@ function TaskList(){
       setEditFormData(newFormData);
     };
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_TASKS' });
-      }, []);
+    // useEffect(() => {
+    //     dispatch({ type: 'FETCH_TASKS' });
+    //   }, []);
 
       const [editTaskID, setTaskID] = useState(null)
 
@@ -115,9 +115,10 @@ function TaskList(){
         <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Task Name</TableCell>
-            <TableCell >Task Description/Notes</TableCell>
-            <TableCell>Actions</TableCell>
+            {/* <TableCell></TableCell> */}
+            <TableCell> <strong>Task Name</strong></TableCell>
+            <TableCell> <strong>Task Description/Notes </strong></TableCell>
+            <TableCell> <strong>Actions </strong></TableCell>
           </TableRow>
           
         </TableHead>

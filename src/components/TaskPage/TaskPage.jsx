@@ -19,10 +19,12 @@ function TaskPage() {
   return (
     <>
     <div className="app-container">
+    <TaskForm />
+    
       <TaskList />
       </div>
-      <br />
-      <TaskForm />
+     
+     
 
     </>
 

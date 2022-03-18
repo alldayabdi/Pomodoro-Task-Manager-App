@@ -1,0 +1,17 @@
+.inputClass {
+    border-radius:4px;
+    font-size:14px;
+    padding:15px;
+    margin:5px;
+    
+
+}
+
+.flex-container {
+    display: flex;
+    height: 50px;
+  }
+
+  .fill-width {
+    flex: 1;
+  }

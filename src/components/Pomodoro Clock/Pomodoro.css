@@ -13,7 +13,7 @@
   }
 
   .input-wrapper {
-    margin: 1.5rem;
+    margin: 0.5rem;
   }
   .input-wrapper input {
     height: 30px;
@@ -38,4 +38,5 @@
     background:#0C0E1B;
     min-width: 80px;
     cursor: pointer;
+    /* float: right; */
   }
