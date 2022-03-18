@@ -57,6 +57,7 @@ function TaskList(){
 
       const handleEditFormSubmit = (event) => {
         event.preventDefault();
+        console.log('In the edit save');
     
         const editedTask = {
           id: editTaskID,
@@ -109,7 +110,7 @@ function TaskList(){
 
     return (
         <>
-        <FormControl onSubmit={handleEditFormSubmit} >
+        <form onSubmit={handleEditFormSubmit} >
           <TableContainer component={Paper}>
         <Table>
         <TableHead>
@@ -148,7 +149,7 @@ function TaskList(){
         </TableBody>
         </Table>
         </TableContainer>
-        </FormControl>
+        </form>
         </>
 
     )
