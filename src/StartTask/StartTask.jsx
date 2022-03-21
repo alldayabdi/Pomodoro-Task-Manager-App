@@ -7,7 +7,14 @@ import Settings from '../components/Pomodoro Clock/Settings';
 import CountDownCircle from '../components/Pomodoro Clock/Countdown'
 import Button from '../components/Pomodoro Clock/Button';
 const StartTask = () => {
-  const {pomodoro, executing, setCurrentTimer} = useContext(SettingContext)
+  const {pomodoro, 
+    executing,
+     setCurrentTimer, 
+     SettingsBtn, 
+     pauseTimer,
+     startTimer,
+     startAnimate,
+     children} = useContext(SettingContext)
     
     const startTask = useSelector(store => store.holdStartDetails);
     console.log(holdStartDetails.id);
@@ -45,8 +52,25 @@ const StartTask = () => {
               calledFunction={() => setCurrentTimer('long')} 
             />
           </li>
+          </ul>
+          <Button title = "Settings" calledFunction ={SettingsBtn} />
+    <div className='time-container'>
+      <div className="time-wrapper">
+      <CountDownCircle
+      pomodoro ={pomodoro}
+      timer = {pomodoro}
+      animate = {startAnimate}
+      >
+    {children}
+    </CountDownCircle>
+      </div>
+    </div>
+    <div className='button-wrapper'>
+    <Button title="Start" activeClass={!startAnimate ? 'active' : undefined} calledFunction={startTimer} />
+     <Button title="Pause" activeClass={startAnimate ? 'active' : undefined} calledFunction={pauseTimer} />
 
-   </ul>
+    </div>
+  
     </>
   }
     </div>
