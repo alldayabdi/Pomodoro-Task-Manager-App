@@ -1,10 +1,27 @@
+
 .container {
     color:#e3d9d9;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     min-height: 100vh;
     background: rgb(49, 74, 59);
     background: radial-gradient(circle, #4b574b 0%, #434a41 65%); 
   }
+
+
+.container .labels {
+  list-style: none;
+  display: flex;
+  text-transform: uppercase;
+  font-size: .8rem;
+  padding:.3rem .3rem;
+  background-color: #0C0E1B;
+  border-radius: 1.5rem;
+}
+
+.active-label {
+  color: #0C0E1B;
+  background-color: #FE6F6B;
+}
