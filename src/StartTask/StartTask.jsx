@@ -1,80 +1,71 @@
-import React, { useContext } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import holdStartDetails from '../redux/reducers/startTaskReducer';
+import React, { useEffect, useContext } from 'react'
+import Button from '../components/Pomodoro Clock/Button'
+import CountdownAnimation from '../components/Pomodoro Clock/CountdownAnimation'
+import SetPomodoro from '../components/Pomodoro Clock/SetPomodoro'
+import { SettingsContext } from '../components/Pomodoro Clock/SettingsContext'
 import './StartTask.css'
-import { SettingContext } from '../components/Pomodoro Clock/ContextSettings';
-import Settings from '../components/Pomodoro Clock/Settings';
-import CountDownCircle from '../components/Pomodoro Clock/Countdown'
-import Button from '../components/Pomodoro Clock/Button';
+
 const StartTask = () => {
-  const {pomodoro, 
+
+  const {
+    pomodoro,
     executing,
-     setCurrentTimer, 
-     SettingsBtn, 
-     pauseTimer,
-     startTimer,
-     startAnimate,
-     children} = useContext(SettingContext)
-    
-    const startTask = useSelector(store => store.holdStartDetails);
-    console.log(holdStartDetails.id);
+    startAnimate,
+    children,
+    startTimer,
+    pauseTimer,
+    updateExecute,
+    setCurrentTimer,
+    SettingsBtn } = useContext(SettingsContext)
+
+    useEffect(() => {updateExecute(executing)}, [executing, startAnimate])
+
   return (
+    <div className="container">
+      
+      {pomodoro !== 0 ?
       <>
-      <div className='container'>
-   
-    {/* <CountDownCircle /> */}
-    {/* <p><strong>{startTask.name}</strong></p>
-    <p>{startTask.description}</p> */}
-   {pomodoro !== 0 ? 
-   <Settings/>
-   :
-    <>
-   <ul className='labels'>
-    <li>
-    <Button 
+        <ul className="labels">
+          <li>
+            <Button 
               title="Work" 
               activeClass={executing.active === 'work' ? 'active-label' : undefined} 
-              calledFunction={() => setCurrentTimer('work')} 
+              _callback={() => setCurrentTimer('work')} 
             />
-    </li>
-
-    <li>
+          </li>
+          <li>
             <Button 
               title="Short Break" 
               activeClass={executing.active === 'short' ? 'active-label' : undefined} 
-              calledFunction={() => setCurrentTimer('short')} 
+              _callback={() => setCurrentTimer('short')} 
             />
           </li>
           <li>
             <Button 
               title="Long Break" 
               activeClass={executing.active === 'long' ? 'active-label' : undefined} 
-              calledFunction={() => setCurrentTimer('long')} 
+              _callback={() => setCurrentTimer('long')} 
             />
           </li>
-          </ul>
-          <Button title = "Settings" calledFunction ={SettingsBtn} />
-    <div className='time-container'>
-      <div className="time-wrapper">
-      <CountDownCircle
-      pomodoro ={pomodoro}
-      timer = {pomodoro}
-      animate = {startAnimate}
-      >
-    {children}
-    </CountDownCircle>
-      </div>
+        </ul>
+        <Button title="Settings" _callback={SettingsBtn} />
+        <div className="timer-container">
+          <div className="time-wrapper">
+              <CountdownAnimation
+                pomodoro={pomodoro} 
+                timer={pomodoro} 
+                animate={startAnimate}
+              >
+                {children}
+              </CountdownAnimation>
+          </div>
+        </div>
+        <div className="button-wrapper">
+          <Button title="Start" activeClass={!startAnimate ? 'active' : undefined} _callback={startTimer} />
+          <Button title="Pause" activeClass={startAnimate ? 'active' : undefined} _callback={pauseTimer} />
+        </div>
+      </> : <SetPomodoro />}
     </div>
-    <div className='button-wrapper'>
-    <Button title="Start" activeClass={!startAnimate ? 'active' : undefined} calledFunction={startTimer} />
-     <Button title="Pause" activeClass={startAnimate ? 'active' : undefined} calledFunction={pauseTimer} />
-
-    </div>
-  
-    </>
-  }
-    </div>
-    </>
   )
 }
 

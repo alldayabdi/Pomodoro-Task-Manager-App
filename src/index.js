@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 import App from './components/App/App';
-import SettingsContextProvider from './components/Pomodoro Clock/ContextSettings';
+
+import SettingsContextProvider from './components/Pomodoro Clock/SettingsContext'
 
 ReactDOM.render(
   <SettingsContextProvider>
