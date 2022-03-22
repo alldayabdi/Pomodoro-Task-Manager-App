@@ -28,6 +28,19 @@ const style = {
 function TaskItem({ task, handleEditClick, handleDeleteClick }) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const [completed, setCompleted] = useState(false)
+
+    const handleCheckbox = (event) =>{
+        // console.log(task.id);
+        if(event.target.checked) {
+            setCompleted(true)
+            console.log(completed);
+        }
+        else {
+            setCompleted(false)
+            console.log(completed);
+        }
+    }
 
     // function handleDelete(){
     //     swal({
@@ -52,9 +65,9 @@ function handleStart(id){
     history.push('/start')
 }
 
-const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+// const [open, setOpen] = React.useState(false);
+//   const handleOpen = () => setOpen(true);
+//   const handleClose = () => setOpen(false);
 
 
 
@@ -62,7 +75,11 @@ const [open, setOpen] = React.useState(false);
         <>
            <TableRow>
                
-           
+                <TableCell><input type="checkbox"
+                 checked={completed} 
+                 onChange={handleCheckbox}
+                 
+                 /></TableCell>
                 <TableCell>{task.name}</TableCell>
                 <TableCell>{task.description}</TableCell>
 

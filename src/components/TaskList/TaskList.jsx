@@ -116,6 +116,7 @@ function TaskList(){
         <TableHead>
           <TableRow>
             {/* <TableCell></TableCell> */}
+            <TableCell></TableCell>
             <TableCell> <strong>Task Name</strong></TableCell>
             <TableCell> <strong>Task Description/Notes </strong></TableCell>
             <TableCell> <strong>Actions </strong></TableCell>

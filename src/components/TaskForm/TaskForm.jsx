@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import './TaskForm.css'
 
 function TaskForm() {
+   
     const [description, setDescription] = useState("");
     const [taskName, setTaskName] = useState("");
     const userId = useSelector(store => store.user.id);
@@ -34,13 +35,13 @@ function TaskForm() {
     return (
         <div className='formContainer'>
         <form onSubmit={handleSubmit}>
-            <TextField id="outlined-basic" label="Task Name" variant="outlined" 
+            <TextField  required id="outlined-basic" label="Task Name" variant="outlined" 
                 type="text"
                 placeholder="Enter Task Name"
                 onChange={(event) => setTaskName(event.target.value)}
             />
 
-            <TextField id="filled-basic" label="Task Description" variant="filled"
+            <TextField required id="filled-basic" label="Task Description" variant="filled"
                 type="text"
                 placeholder="Enter Task Description"
                 onChange={(event) => setDescription(event.target.value)}
