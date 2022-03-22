@@ -32,16 +32,24 @@ function TaskItem({ task, handleEditClick, handleDeleteClick }) {
 
     const handleCheckbox = (event) =>{
         // console.log(task.id);
-        if(event.target.checked) {
-            setCompleted(true)
-            console.log(completed);
-        }
-        else {
-            setCompleted(false)
-            console.log(completed);
-        }
+        console.log('This is the event.target.checked', event.target.checked);
+       setCompleted(event.target.checked)
+
+        sendComplete();
     }
 
+    function sendComplete(){
+        console.log(task.id);
+
+        const completedTask = {
+            id: task.id,
+            isCompleted: completed
+        }
+
+        dispatch({ type: 'EDIT_COMPLETE_STATUS', payload: completedTask });
+
+
+    }
     // function handleDelete(){
     //     swal({
     //         title: 'Are you sure?',
@@ -69,7 +77,7 @@ function handleStart(id){
 //   const handleOpen = () => setOpen(true);
 //   const handleClose = () => setOpen(false);
 
-
+console.log(completed);
 
     return (
         <>
