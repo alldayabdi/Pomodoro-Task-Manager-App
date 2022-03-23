@@ -94,14 +94,14 @@ router.get('/', (req, res) => {
 router.put('/:id', (req, res) => {
   let reqId = req.params.id;
   if (req.isAuthenticated()) {
-  console.log('/tasks put route from the edit.....', req.body.status);
+  console.log('/tasks put route from the edit.....', req.body.isCompleted);
   const queryText = `UPDATE "tasks"
   SET "status" =  $2
   WHERE id = $1;`;
   // endpoint functionality 
   
   
-  const queryValues = [reqId, req.body.status,];
+  const queryValues = [reqId, req.body.isCompleted,];
   console.log(req.body.status);
   console.log(reqId);
 

@@ -10,6 +10,8 @@ import FormControl from '@mui/material/FormControl';
 import TableCell from '@mui/material/TableCell';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -35,21 +37,22 @@ function TaskItem({ task, handleEditClick, handleDeleteClick }) {
         console.log('This is the event.target.checked', event.target.checked);
        setCompleted(event.target.checked)
 
-        sendComplete();
+        
     }
 
-    function sendComplete(){
-        console.log(task.id);
+  
 
         const completedTask = {
             id: task.id,
             isCompleted: completed
         }
+        
 
         dispatch({ type: 'EDIT_COMPLETE_STATUS', payload: completedTask });
+        console.log(completed);
 
 
-    }
+   
     // function handleDelete(){
     //     swal({
     //         title: 'Are you sure?',
@@ -77,7 +80,7 @@ function handleStart(id){
 //   const handleOpen = () => setOpen(true);
 //   const handleClose = () => setOpen(false);
 
-console.log(completed);
+// console.log(completed);
 
     return (
         <>
@@ -92,14 +95,14 @@ console.log(completed);
                 <TableCell>{task.description}</TableCell>
 
                 <TableCell>
-                    <button onClick={() => handleStart(task.id)}>Start</button>
+                    <button onClick={() => handleStart(task.id)}><PlayCircleFilledIcon/></button>
 
                     <button onClick={(event) =>
                         handleEditClick(event, task)} >
-                        Edit
+                        <EditRoundedIcon/>
                     </button>
                     <button type="button" onClick={() => handleDeleteClick(task.id)}>
-                        {/* <DeleteIcon/> */} Delete
+                        <DeleteIcon/> 
                     </button>
 
 
