@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   min-height: 100vh;
   background: rgb(49, 47, 62);
  
@@ -69,6 +69,11 @@ button {
   min-width: 80px;
   cursor: pointer;
 }
+
+.startIcon{
+  background-color: blue;
+}
+
 
 /* .button-wrapper button.activve {
   color: #0C0E1B;

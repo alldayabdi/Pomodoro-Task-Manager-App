@@ -25,6 +25,8 @@ function TaskList(){
       
     });
 
+    
+
     const handleEditFormChange = (event) => {
       event.preventDefault();
       const fieldName = event.target.getAttribute("name");
@@ -106,7 +108,7 @@ function TaskList(){
         setUpdatedTasks(newTasks);
       };
       
-
+// console.log(taskReducer.status);
 
     return (
         <>
@@ -114,12 +116,12 @@ function TaskList(){
           <TableContainer component={Paper}>
         <Table>
         <TableHead>
-          <TableRow>
+          <TableRow className='taskRrow'>
             {/* <TableCell></TableCell> */}
             <TableCell></TableCell>
-            <TableCell> <strong>Task Name</strong></TableCell>
-            <TableCell> <strong>Task Description/Notes </strong></TableCell>
-            <TableCell> <strong>Actions </strong></TableCell>
+            <TableCell style={{ fontSize: '1.5em' }}> <strong>Task Name</strong></TableCell>
+            <TableCell style={{ fontSize: '1.5em' }}> <strong>Task Description/Notes </strong></TableCell>
+            <TableCell style={{ fontSize: '1.5em' }}> <strong>Actions </strong></TableCell>
           </TableRow>
           
         </TableHead>
@@ -139,6 +141,7 @@ function TaskList(){
                      <TaskItem  task={task} 
                      handleEditClick ={handleEditClick}
                      handleDeleteClick ={handleDeleteClick}
+                     status = {tasks.status}
                      />
                      )} 
                     

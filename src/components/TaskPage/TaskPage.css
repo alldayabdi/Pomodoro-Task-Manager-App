@@ -4,6 +4,9 @@
     gap: 10px;
     padding: 1rem;
   }
+  .taskRow{
+    font-size: 50em
+  }
 
 th,td {
   border: 1px solid #ffffff;
@@ -28,4 +31,5 @@ form {
   
   form * {
     font-size: 16px;
+    size: 6px;
   }

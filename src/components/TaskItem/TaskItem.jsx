@@ -12,6 +12,10 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite'; 
+import './TaskItem.css'
 const style = {
     position: 'absolute',
     top: '50%',
@@ -27,7 +31,7 @@ const style = {
 
 
 
-function TaskItem({ task, handleEditClick, handleDeleteClick }) {
+function TaskItem({ task, handleEditClick, handleDeleteClick, }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [completed, setCompleted] = useState(false)
@@ -37,19 +41,29 @@ function TaskItem({ task, handleEditClick, handleDeleteClick }) {
         console.log('This is the event.target.checked', event.target.checked);
        setCompleted(event.target.checked)
 
-        
+       const completedTask = {
+        id: task.id,
+        isCompleted: event.target.checked
     }
+    dispatch({ type: 'EDIT_COMPLETE_STATUS', payload: completedTask });
+
+    
+    }
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_TASKS' });
+      }, []);
 
   
 
-        const completedTask = {
-            id: task.id,
-            isCompleted: completed
-        }
+        // const completedTask = {
+        //     id: task.id,
+        //     isCompleted: completed
+        // }
         
 
-        dispatch({ type: 'EDIT_COMPLETE_STATUS', payload: completedTask });
-        console.log(completed);
+        // dispatch({ type: 'EDIT_COMPLETE_STATUS', payload: completedTask });
+        // console.log(completed);
 
 
    
@@ -81,27 +95,28 @@ function handleStart(id){
 //   const handleClose = () => setOpen(false);
 
 // console.log(completed);
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
         <>
            <TableRow>
                
-                <TableCell><input type="checkbox"
+                <TableCell><Checkbox {...label} icon={<FavoriteBorder />} type="checkbox"
                  checked={completed} 
                  onChange={handleCheckbox}
                  
                  /></TableCell>
-                <TableCell>{task.name}</TableCell>
-                <TableCell>{task.description}</TableCell>
+                <TableCell className='taskStyle'>{task.name}</TableCell>
+                <TableCell className='taskStyle'>{task.description}</TableCell>
 
                 <TableCell>
-                    <button onClick={() => handleStart(task.id)}><PlayCircleFilledIcon/></button>
+                    <button className='startIcon' onClick={() => handleStart(task.id)}><PlayCircleFilledIcon/></button>
 
-                    <button onClick={(event) =>
+                    <button className='editIcon' onClick={(event) =>
                         handleEditClick(event, task)} >
                         <EditRoundedIcon/>
                     </button>
-                    <button type="button" onClick={() => handleDeleteClick(task.id)}>
+                    <button  className='deleteIcon' type="button" onClick={() => handleDeleteClick(task.id)}>
                         <DeleteIcon/> 
                     </button>
 

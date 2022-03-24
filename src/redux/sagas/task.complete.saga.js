@@ -6,8 +6,8 @@ function* editComplete(action) {
 
     try{
         console.log(action.payload.isCompleted);
-        yield axios.put(`/api/tasks/${action.payload.id}`, action.payload.isCompleted);
-        // yield put({type: 'FETCH_TASKS'}) //
+        yield axios.put(`/api/tasks/taco/${action.payload.id}`,  action.payload);
+        yield put({type: 'FETCH_TASKS'}) //
     }catch (error){
         console.log('Error editing tasks', error);
     }

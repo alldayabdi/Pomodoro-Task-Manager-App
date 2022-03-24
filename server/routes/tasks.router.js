@@ -71,30 +71,30 @@ router.get('/', (req, res) => {
     }
   });
 
-//   router.put('/:id', (req, res) => {
-//     let reqId = req.params.id;
-//     if (req.isAuthenticated()) {
-//     console.log('/tasks put route', req.body);
-//     console.log('testing log');
+  router.put('/:id', (req, res) => {
+    let reqId = req.params.id;
+    if (req.isAuthenticated()) {
+    console.log('/tasks put route', req.body);
+    console.log('testing log');
     
-//     const queryText = `UPDATE "tasks"
-//   SET "name" =  $1, "description" = $2
-//   WHERE id = $3;`;
-//     // endpoint functionality
-//     const queryValues = [req.body.name, req.body.description, reqId];
-//     console.log(req.body.name);
-//     pool.query(queryText, queryValues)
-//     .then(result => res.sendStatus(201))
-//     .catch(err => res.sendStatus(500));
-//     } else {
-//         res.sendStatus(403)
-//     }
-// });
+    const queryText = `UPDATE "tasks"
+  SET "name" =  $1, "description" = $2
+  WHERE id = $3;`;
+    // endpoint functionality
+    const queryValues = [req.body.name, req.body.description, reqId];
+    console.log(req.body.name);
+    pool.query(queryText, queryValues)
+    .then(result => res.sendStatus(201))
+    .catch(err => res.sendStatus(500));
+    } else {
+        res.sendStatus(403)
+    }
+});
 
-router.put('/:id', (req, res) => {
+router.put('/taco/:id', (req, res) => {
   let reqId = req.params.id;
   if (req.isAuthenticated()) {
-  console.log('/tasks put route from the edit.....', req.body.isCompleted);
+  console.log('/tasks put route from the edit.....', req.body);
   const queryText = `UPDATE "tasks"
   SET "status" =  $2
   WHERE id = $1;`;
@@ -102,7 +102,7 @@ router.put('/:id', (req, res) => {
   
   
   const queryValues = [reqId, req.body.isCompleted,];
-  console.log(req.body.status);
+  console.log(req.body.isCompleted);
   console.log(reqId);
 
   
