@@ -27,6 +27,8 @@ function TaskList(){
 
     
 
+    
+
     const handleEditFormChange = (event) => {
       event.preventDefault();
       const fieldName = event.target.getAttribute("name");
@@ -107,6 +109,8 @@ function TaskList(){
     
         setUpdatedTasks(newTasks);
       };
+
+      
       
 // console.log(taskReducer.status);
 
@@ -135,6 +139,7 @@ function TaskList(){
                      <TaskEdit editFormData= {editFormData}
                       handleEditFormChange ={handleEditFormChange}
                       handleCancelClick={handleCancelClick}
+                      
                       
                       />
                      ): (

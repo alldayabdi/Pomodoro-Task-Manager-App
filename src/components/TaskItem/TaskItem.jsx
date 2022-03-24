@@ -40,6 +40,7 @@ function TaskItem({ task, handleEditClick, handleDeleteClick, }) {
         // console.log(task.id);
         console.log('This is the event.target.checked', event.target.checked);
        setCompleted(event.target.checked)
+       console.log(task.id);
 
        const completedTask = {
         id: task.id,
@@ -101,7 +102,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
         <>
            <TableRow>
                
-                <TableCell><Checkbox {...label} icon={<FavoriteBorder />} type="checkbox"
+                <TableCell><input type="checkbox"
                  checked={completed} 
                  onChange={handleCheckbox}
                  

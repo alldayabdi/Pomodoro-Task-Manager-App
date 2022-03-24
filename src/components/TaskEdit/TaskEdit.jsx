@@ -2,10 +2,13 @@ import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import './TaskEdit.css'
 import Modal from '@mui/material/Modal';
+import DoneIcon from '@mui/icons-material/Done';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 
-const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick}) => {
-    // const dispatch = useDispatch();
+const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick,}) => {
+ 
+  // const dispatch = useDispatch();
     // useEffect(() => {
     //    adjustInputSize()
     //   }, [editFormData.taskName]);
@@ -21,7 +24,11 @@ const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick}) => {
   return (
     <tr>
         <td>
+       
+     
             <div className='flex-container'>
+            
+           
         <input
         className='fill-width'
                 type="text"
@@ -32,7 +39,11 @@ const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick}) => {
                 name = "taskName"
                 
             />
+            
+            
             </div>
+            
+            
             
 
         </td>
@@ -51,9 +62,9 @@ const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick}) => {
 
         </td>
         <td>
-        <button type="submit">Save</button>
+        <button type="submit"><DoneIcon fontSize='small'/></button>
         <button type="button" onClick={handleCancelClick}>
-          Cancel
+          <CancelIcon fontSize='small'/>
         </button>
 
         </td>

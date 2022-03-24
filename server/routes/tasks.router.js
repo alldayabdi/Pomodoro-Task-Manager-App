@@ -94,7 +94,7 @@ router.get('/', (req, res) => {
 router.put('/taco/:id', (req, res) => {
   let reqId = req.params.id;
   if (req.isAuthenticated()) {
-  console.log('/tasks put route from the edit.....', req.body);
+  console.log('/tasks put route from the complete.....', req.body);
   const queryText = `UPDATE "tasks"
   SET "status" =  $2
   WHERE id = $1;`;

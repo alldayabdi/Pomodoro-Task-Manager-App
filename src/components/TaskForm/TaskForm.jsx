@@ -4,9 +4,12 @@ import swal from 'sweetalert';
 import TextField from '@mui/material/TextField';
 import './TaskForm.css'
 import Portal from '@mui/material/Portal';
+import Box from '@mui/material/Box';
 
 function TaskForm() {
     const [show, setShow] = React.useState(false);
+    // const container = React.useRef(null);
+    const container = React.useRef(null);
 
     const [description, setDescription] = useState("");
     const [taskName, setTaskName] = useState("");
@@ -14,7 +17,7 @@ function TaskForm() {
 
     const dispatch = useDispatch();
     const tasks = useSelector(store => store.taskReducer);
-    const container = React.useRef(null);
+    
 
     const handleClick = () => {
         setShow(!show);
@@ -43,11 +46,13 @@ function TaskForm() {
     return (
         <div className='formContainer'>
             <button className='plusbutton' onClick={handleClick}>
-                {show ? '-' : '+'}
+                {show ? '-' : 'Add to Task List'}
             </button>
-            {show ? (
-                <Portal container={container.current}>
-                    <form onSubmit={handleSubmit}>
+            
+        
+        {show ? (
+          <Portal container={container.current}>
+            <form onSubmit={handleSubmit}>
                         <TextField required id="outlined-basic" label="Task Name" variant="outlined"
                             type="text"
                             placeholder="Enter Task Name"
@@ -59,16 +64,24 @@ function TaskForm() {
                             placeholder="Enter Task Description"
                             onChange={(event) => setDescription(event.target.value)}
                         />
-                        <br />
+                        {/* <br /> */}
 
 
-                        <button className='taskList' type="submit">Add to Task List!</button>
+                        <button className='taskList' className ='submitTask' type="submit">Submit Task</button>
 
 
                     </form>
+          </Portal>
+        ) : null}
+      
+      <Box sx={{ p: 1, my: 1, }} ref={container} />
+            
+                
+                {/* <Portal container={container.current}> */}
+                    
 
-                </Portal>
-            ) : null}
+                {/* </Portal> */}
+           
         </div>
     )
 
