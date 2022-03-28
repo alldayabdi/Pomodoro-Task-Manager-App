@@ -13,48 +13,43 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import Checkbox from '@mui/material/Checkbox';
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite'; 
 import './TaskItem.css'
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+
 
 
 
 
 function TaskItem({ task, handleEditClick, handleDeleteClick, }) {
+const [toggled, setToggled] = useState(false)
+ const ToggleSwitch = () => {
+    toggled ? setToggled (false) : setToggled(true)
+    console.log(toggled);
+ }
+
+
     const dispatch = useDispatch();
     const history = useHistory();
     const [completed, setCompleted] = useState(true)
     const tasks = useSelector(store => store.taskReducer); 
     
 
-    const handleCheckbox = (event) =>{
+    // const handleCheckbox = (event) =>{
         
-        // console.log(task.id);
+    //     // console.log(task.id);
         
-        console.log('This is the event.target.checked and task', event.target.checked, task.name);
-       setCompleted(event.target.checked)
-       console.log(task.id);
+    //     console.log('This is the event.target.checked and task', event.target.checked, task.name);
+    //    setCompleted(event.target.checked)
+    //    console.log(task.id);
        
 
-       const completedTask = {
-        id: task.id,
-        isCompleted: event.target.checked
-    }
-    dispatch({ type: 'EDIT_COMPLETE_STATUS', payload: completedTask });
+    //    const completedTask = {
+    //     id: task.id,
+    //     isCompleted: event.target.checked
+    // }
+    // dispatch({ type: 'EDIT_COMPLETE_STATUS', payload: completedTask });
 
     
-    }
+    // }
 
     useEffect(() => {
         dispatch({ type: 'FETCH_TASKS' });
@@ -107,11 +102,11 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
         <>
-           <TableRow>
-               
+        
+           <TableRow className ={toggled? "toggledOn" : null}>
+             
            <TableCell><Checkbox type="checkbox"
-                 checked={completed} 
-                 onChange={handleCheckbox}
+                 onClick={ToggleSwitch}
                  
                  />
                  </TableCell>
@@ -133,6 +128,8 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
                 </TableCell>
 
             </TableRow>
+            
+           
 
 
         </>

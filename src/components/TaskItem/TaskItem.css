@@ -15,3 +15,7 @@
 /* .task{
     font-size: 20px;
 } */
+
+.toggledOn{
+    text-decoration:line-through;
+}

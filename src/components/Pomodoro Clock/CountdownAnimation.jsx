@@ -17,7 +17,7 @@ const CountdownAnimation = ({key, timer, animate, children}) => {
           ['#FFA500', 0.33],
         ]}
         strokeWidth={6}
-        size={220}
+        size={300}
         trailColor="#FFA500"
         onComplete={ () => {
           stopAimate()
