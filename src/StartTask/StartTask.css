@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: rgb(49, 47, 62);
+  background: rgb(255, 255, 255);
  
 }
 
@@ -28,7 +28,7 @@
 
 .active-label {
   color: rgb(49, 47, 62);
-  background-color: #FE6F6B;
+  background-color: orange
 }
 
 .timer-container {
@@ -36,6 +36,7 @@
   flex:0.5;
   align-items: center;
   justify-content: center;
+  padding: 0.1em;
 }
 
 .time-wrapper {
@@ -49,6 +50,7 @@
   background: rgb(49, 47, 62);
   font-size: 3.5rem;
   box-shadow: 1rem 1.5rem 2rem rgba(0,0,0,0.6)
+  
 }
 
 .button-wrapper {
@@ -89,12 +91,13 @@ button {
 .input-wrapper input {
   height: 60px;
   width: 60px;
-  padding: 5rem;
-  background-color: white;
-  color: black;
+  padding: 12rem;
+  background-color: rgb(49, 47, 62);
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 50%;
   margin-right: 0.3rem;
   text-align: center;
-  font-size: 14pt;
+  font-size: 20pt;
+  font-style: oblique;
 }

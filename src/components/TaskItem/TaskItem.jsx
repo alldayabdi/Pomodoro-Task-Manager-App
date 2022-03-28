@@ -34,13 +34,18 @@ const style = {
 function TaskItem({ task, handleEditClick, handleDeleteClick, }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [completed, setCompleted] = useState(false)
+    const [completed, setCompleted] = useState(true)
+    const tasks = useSelector(store => store.taskReducer); 
+    
 
     const handleCheckbox = (event) =>{
+        
         // console.log(task.id);
-        console.log('This is the event.target.checked', event.target.checked);
+        
+        console.log('This is the event.target.checked and task', event.target.checked, task.name);
        setCompleted(event.target.checked)
        console.log(task.id);
+       
 
        const completedTask = {
         id: task.id,
@@ -54,6 +59,8 @@ function TaskItem({ task, handleEditClick, handleDeleteClick, }) {
     useEffect(() => {
         dispatch({ type: 'FETCH_TASKS' });
       }, []);
+
+      
 
   
 
@@ -102,11 +109,12 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
         <>
            <TableRow>
                
-                <TableCell><input type="checkbox"
+           <TableCell><Checkbox type="checkbox"
                  checked={completed} 
                  onChange={handleCheckbox}
                  
-                 /></TableCell>
+                 />
+                 </TableCell>
                 <TableCell className='taskStyle'>{task.name}</TableCell>
                 <TableCell className='taskStyle'>{task.description}</TableCell>
 

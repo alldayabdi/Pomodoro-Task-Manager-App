@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
       console.log('/tasks GET route');
       console.log('is authenticated?', req.isAuthenticated());
       console.log('user', req.user);
-      let queryText = `SELECT * FROM "tasks" WHERE user_id = ${req.user.id}`;
+      let queryText = `SELECT * FROM "tasks" WHERE user_id = ${req.user.id} ORDER BY id ASC`;
       pool.query(queryText).then((result) => {
         res.send(result.rows);
       }).catch((error) => {
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
       console.log('/tasks GET Specific task route');
       console.log('is authenticated?', req.isAuthenticated());
       console.log('user', req.user);
-      let queryText = `SELECT * FROM "tasks" WHERE id = ${req.params.id}`;
+      let queryText = `SELECT * FROM "tasks" WHERE id = ${req.params.id} `;
       pool.query(queryText).then((result) => {
         res.send(result.rows);
       }).catch((error) => {

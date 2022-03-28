@@ -4,7 +4,7 @@ import './Pomodoro.css'
 const SetPomodoro = () => {
 
     const [newTimer, setNewTimer] = useState({
-        work: 30,
+        work: 25,
         short: 5,
         long: 15,
         active: 'work'

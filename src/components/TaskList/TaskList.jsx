@@ -12,6 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import FormControl from '@mui/material/FormControl';
 import swal from 'sweetalert';
+import { red } from '@mui/material/colors';
 
 
 function TaskList(){
@@ -24,6 +25,12 @@ function TaskList(){
       taskDescription: ''
       
     });
+
+    const tableStyling = {
+      width : 300,
+     
+      
+    }
 
     
 
@@ -117,15 +124,24 @@ function TaskList(){
     return (
         <>
         <form onSubmit={handleEditFormSubmit} >
-          <TableContainer component={Paper}>
-        <Table>
+          <TableContainer component={Paper}
+          sx ={{
+            width: 'max-content',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            padding: 0
+          }}
+          >
+        <Table >
         <TableHead>
           <TableRow className='taskRrow'>
             {/* <TableCell></TableCell> */}
             <TableCell></TableCell>
-            <TableCell style={{ fontSize: '1.5em' }}> <strong>Task Name</strong></TableCell>
-            <TableCell style={{ fontSize: '1.5em' }}> <strong>Task Description/Notes </strong></TableCell>
-            <TableCell style={{ fontSize: '1.5em' }}> <strong>Actions </strong></TableCell>
+            <TableCell
+            sx = {{...tableStyling}}
+             style={{ fontSize: '1.5em' }} align='left'> <strong>Task Name</strong></TableCell>
+            <TableCell  sx = {{...tableStyling}}style={{ fontSize: '1.5em' }} align='right'> <strong>Task Description/Notes </strong></TableCell>
+            <TableCell  sx = {{...tableStyling}}style={{ fontSize: '1.5em' }} align ='center'> <strong>Actions </strong></TableCell>
           </TableRow>
           
         </TableHead>

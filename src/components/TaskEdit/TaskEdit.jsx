@@ -4,6 +4,7 @@ import './TaskEdit.css'
 import Modal from '@mui/material/Modal';
 import DoneIcon from '@mui/icons-material/Done';
 import CancelIcon from '@mui/icons-material/Cancel';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 
 const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick,}) => {
@@ -29,7 +30,7 @@ const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick,}) => {
             <div className='flex-container'>
             
            
-        <input
+        <TextareaAutosize
         className='fill-width'
                 type="text"
                 id='nameOfTask'
@@ -49,13 +50,14 @@ const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick,}) => {
         </td>
         <td>
         <div className='flex-container'>
-        <input
+        <TextareaAutosize
         className='fill-width'
                 type="text"
                 placeholder="Enter Task Description"
                 onChange={handleEditFormChange}
                 name ="taskDescription"
                 value = {editFormData.taskDescription}
+                style={{ width: 200 }}
             />
             </div>
             

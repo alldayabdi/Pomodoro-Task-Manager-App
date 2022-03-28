@@ -7,6 +7,7 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  /* background-color: rgb(21, 21, 21); */
 }
 
 img {
@@ -31,12 +32,13 @@ Button
   padding: 10px 20px;
   border-color: #014041;
   border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: rgb(49, 47, 62);
+  border-radius: 30px;
+  background-color: orange;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  width: 200px;
 }
 
 .btn_sizeMin {
@@ -55,7 +57,7 @@ Button
 }
 
 .btn:hover {
-  background-color: red;
+  /* background-color: rgb(245, 144, 36); */
   text-decoration: none;
 }
 
@@ -67,13 +69,15 @@ Button
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: white;
+  font-size:30px
+  
 }
 
 .btn_asLink:hover {
   background-color: transparent;
   border-color: #008183;
-  color: red
+  color: white
 }
 
 /* --------------------------------------------------------------------------------
@@ -97,12 +101,13 @@ Form Treatment
 
 .formPanel {
   box-sizing: border-box;
+  height: 400px;
   width: 400px;
   max-width: 100%;
-  padding: 25px;
+  padding: 50px;
   margin: 0 auto 20px;
   background-color: #efefef;
-  border-radius: 3px;
+  border-radius: 50px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 
