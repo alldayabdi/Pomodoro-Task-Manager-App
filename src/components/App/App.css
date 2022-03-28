@@ -115,3 +115,8 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.infoPage {
+  font-size: 25px;
+  text-align: center;
+}

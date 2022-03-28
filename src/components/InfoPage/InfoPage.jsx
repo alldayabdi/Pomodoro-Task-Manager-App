@@ -7,8 +7,17 @@ import React from 'react';
 
 function InfoPage() {
   return (
-    <div className="container">
-      <p>Info Page</p>
+    <div className='infoPage'>
+      <h1>Technologies Used</h1>
+        <p>JavaScript</p>
+        <p>React</p>
+        <p>Redux</p>
+        <p>SQL</p>
+        <p>Node.js</p>
+        <p>CSS</p>
+        <p>Material UI</p>
+
+      
     </div>
   );
 }

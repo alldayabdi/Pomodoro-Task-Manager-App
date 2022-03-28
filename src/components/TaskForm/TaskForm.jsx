@@ -53,13 +53,13 @@ function TaskForm() {
         {show ? (
           <Portal container={container.current}>
             <form onSubmit={handleSubmit}>
-                        <TextField required id="outlined-basic" label="Task Name" variant="outlined"
+                        <TextField autoComplete="off" required id="outlined-basic" label="Task Name" variant="outlined"
                             type="text"
                             placeholder="Enter Task Name"
                             onChange={(event) => setTaskName(event.target.value)}
                         />
 
-                        <TextField required id="filled-basic" label="Task Description" variant="filled"
+                        <TextField autoComplete="off" required id="filled-basic" label="Task Description" variant="filled"
                             type="text"
                             placeholder="Enter Task Description"
                             onChange={(event) => setDescription(event.target.value)}
