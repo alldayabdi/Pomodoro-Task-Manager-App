@@ -7,6 +7,7 @@ const CountdownAnimation = ({key, timer, animate, children}) => {
   const { stopAimate } = useContext(SettingsContext)
 
     return (
+      // this is a react component that handles the animation, timer view and colors
       <CountdownCircleTimer
         key={key}
         isPlaying={animate}
@@ -23,8 +24,8 @@ const CountdownAnimation = ({key, timer, animate, children}) => {
           stopAimate()
         }}
       >
-        {children}
-      </CountdownCircleTimer>
+        {children} 
+      </CountdownCircleTimer> // children here represents minutes : seconds
     )
 }
 

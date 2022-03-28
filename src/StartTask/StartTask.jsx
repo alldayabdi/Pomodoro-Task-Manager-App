@@ -21,10 +21,13 @@ const StartTask = () => {
     useEffect(() => {updateExecute(executing)}, [executing, startAnimate])
 
   return (
+    // In our buttons we are able to toggled between modes and when clicked
+    // alongside the start button that specific mode is begun
     <div className="container">
       
       {pomodoro !== 0 ?
       <>
+      
         <ul className="labels">
           <li>
             <Button 
@@ -61,6 +64,7 @@ const StartTask = () => {
           </div>
         </div>
         <div className="button-wrapper">
+        
           <Button title="Start" activeClass={!startAnimate ? 'active' : undefined} _callback={startTimer} />
           <Button title="Pause" activeClass={startAnimate ? 'active' : undefined} _callback={pauseTimer} />
         </div>

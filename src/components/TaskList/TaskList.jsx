@@ -20,6 +20,8 @@ function TaskList(){
     const [updatedTasks, setUpdatedTasks] = useState([]);
     const tasks = useSelector(store => store.taskReducer);
     const userId = useSelector(store => store.user.id);
+
+    // local state created to hold the form data
     const [editFormData, setEditFormData] = useState({
       taskName: '',
       taskDescription: ''
@@ -56,6 +58,7 @@ function TaskList(){
       const handleEditClick = (event, task) =>{
         event.preventDefault();
         console.log(task.id);
+        // We set local state variable to the id that is clicked
         setTaskID(task.id)
 
         const formValues = {
@@ -69,6 +72,8 @@ function TaskList(){
       const handleEditFormSubmit = (event) => {
         event.preventDefault();
         console.log('In the edit save');
+
+        // object created to hold inputs alongside id to dispatch
     
         const editedTask = {
           id: editTaskID,
@@ -78,9 +83,12 @@ function TaskList(){
         };
 
         dispatch({ type: 'EDIT_TASK', payload: editedTask });
-    
+
+        // new variable created as to not mutate data and we use a spread operate
+        // to keep data
         const newTasks = [...tasks];
-    
+        // findIndex is a javascript method that finds an element based on a condition
+        // which here is the task id matching editTaskID
         const index = updatedTasks.findIndex((task) => task.id === editTaskID)
     
         newTasks[index] = editedTask;
@@ -150,6 +158,10 @@ function TaskList(){
             {tasks.map((task, i) => {
                
                 return (
+                  // Fragment allows us to have two components
+                  // One component is a Readable Row, the other is Editable Row
+                  // If the edit button is clicked it sets  the taskID to editTaskId 
+                  // That then causes the editable component to render
                   <Fragment key={i}>
                     {editTaskID === task.id ? (
                      <TaskEdit editFormData= {editFormData}

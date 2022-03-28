@@ -8,20 +8,10 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 
 const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick,}) => {
- 
-  // const dispatch = useDispatch();
-    // useEffect(() => {
-    //    adjustInputSize()
-    //   }, [editFormData.taskName]);
+ // Functions are passed down to handle the edit click and submission
 
-    // const adjustInputSize = () =>{
-    //     const taskname = document.getElementById("nameOfTask")
-    //     if(editFormData.taskName < 1){
-    //         taskname.style.width = taskname.placeholder.length + 2 +'ch'
-    //     } else {
-    //         taskname.style.width = location.length + 5 + 'ch'
-    //     }
-    // }
+
+ 
   return (
     <tr>
         <td>
@@ -36,8 +26,8 @@ const TaskEdit = ({editFormData, handleEditFormChange, handleCancelClick,}) => {
                 id='nameOfTask'
                 placeholder="Enter Task Name"
                 value = {editFormData.taskName}
-                onChange={handleEditFormChange}
-                name = "taskName"
+                onChange={handleEditFormChange} 
+                name = "taskName" // this allows us to use the getAttribute method
                 
             />
             

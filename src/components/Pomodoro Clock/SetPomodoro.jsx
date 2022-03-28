@@ -4,10 +4,11 @@ import './Pomodoro.css'
 const SetPomodoro = () => {
 
     const [newTimer, setNewTimer] = useState({
+        // this is a local state variable to hold the timer settings
         work: 25,
         short: 5,
         long: 15,
-        active: 'work'
+        active: 'work' 
     })
 
     const {updateExecute} = useContext(SettingsContext)

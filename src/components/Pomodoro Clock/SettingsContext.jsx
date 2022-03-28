@@ -1,6 +1,8 @@
 import { useState, createContext } from "react";
 
 export const SettingsContext = createContext()
+// This is react method for passing props around components without 
+// the need to use props
 
 function SettingsContextProvider(props) {
 
@@ -9,6 +11,7 @@ function SettingsContextProvider(props) {
     const [startAnimate, setStartAnimate] = useState(false)
 
     function setCurrentTimer (active_state) {
+        // this function checks if the timer is currently active
         updateExecute({
             ...executing,
             active: active_state
@@ -18,13 +21,17 @@ function SettingsContextProvider(props) {
 
     // start animation fn 
     function startTimer() {
+        // this sets the timer to start
         setStartAnimate(true)
     }
     // pause animation fn 
     function pauseTimer() {
+        // this sets the timer to pause
     setStartAnimate(false)
     }
     // pass time to counter 
+    // here is where the time is calculated by using a javascript method
+    // math.floor
     const children = ({ remainingTime }) => {
     const minutes = Math.floor(remainingTime / 60)
     const seconds = remainingTime % 60
@@ -44,6 +51,8 @@ function SettingsContextProvider(props) {
     }
 
     const setTimerTime = (evaluate) => {
+        // A switch statement is ran to evaluate if the clock is on
+        // work, short or long mode to set the settings.
         switch (evaluate.active) {
             case 'work':
                 setPomodoro(evaluate.work)
@@ -66,6 +75,7 @@ function SettingsContextProvider(props) {
 
     return (
         <SettingsContext.Provider value={{
+            // All of these are props to be passed to main component
             pomodoro, 
             executing,
             updateExecute, 
